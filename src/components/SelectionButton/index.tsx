@@ -1,21 +1,27 @@
 import { useGameStore } from '../../stores/useGameStore'
 import { Hand } from '../../types/hands'
+import paper from '../../assets/images/icon-paper.svg'
+import scissors from '../../assets/images/icon-scissors.svg'
+import rock from '../../assets/images/icon-rock.svg'
 import './styles.scss'
 
 type SelectionButtonProps = {
-  imgSrc: string
   alt: string
 }
 
-export const SelectionButton = ({ imgSrc, alt }: SelectionButtonProps) => {
-  const game = useGameStore()
+const handImage = {
+  paper: paper,
+  scissors: scissors,
+  rock: rock,
+}
+
+export const SelectionButton = ({ alt }: SelectionButtonProps) => {
   const choosePlayerHand = useGameStore((state) => state.choosePlayerHand)
+  const chooseComputerHand = useGameStore((state) => state.chooseComputerHand)
 
   const handlePlayerHandChoice = (hand: Hand) => {
-    console.log({ hand })
     choosePlayerHand(hand)
-
-    console.log({ game })
+    chooseComputerHand()
   }
 
   return (
@@ -23,7 +29,7 @@ export const SelectionButton = ({ imgSrc, alt }: SelectionButtonProps) => {
       className={`selection-button ${alt}-button`}
       onClick={() => handlePlayerHandChoice(alt as Hand)}
     >
-      <img src={imgSrc} alt={alt} />
+      <img src={handImage[alt]} alt={alt} />
     </div>
   )
 }
