@@ -1,0 +1,37 @@
+$border-size: 12px;
+$paper-color: #536ff2;
+$scissors-color: #eaa927;
+$rock-color: #df3d5d;
+
+@mixin hand-button($color) {
+  border: $border-size solid $color;
+}
+
+.selection-button {
+  background: white;
+  border-radius: 100%;
+  box-shadow: inset 4px 4px 10px #222;
+  color: #222;
+  cursor: pointer;
+  padding: 36px;
+  margin: -6% 0 10px;
+  img {
+    user-select: none;
+  }
+  &.paper-button {
+    @include hand-button($paper-color);
+    padding: 30px 36px;
+  }
+  &.scissors-button {
+    @include hand-button($scissors-color);
+    padding: 30px 36px;
+  }
+  &.rock-button {
+    @include hand-button($rock-color);
+  }
+  &:hover {
+    box-shadow: none;
+    // border-width: 14px;
+    transition: all 0.4s;
+  }
+}
