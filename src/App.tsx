@@ -7,8 +7,6 @@ function App() {
   const score = useGameStore((state) => state.score)
   const playerHand = useGameStore((state) => state.playerHand)
 
-  console.log({ playerHand })
-
   return (
     <>
       <Header score={score} />
