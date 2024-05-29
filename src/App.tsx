@@ -1,6 +1,6 @@
 import { Header } from './components/Header/index'
 import { SelectionDisplay } from './components/SelectionDisplay'
-import './App.css'
+import './App.scss'
 import { useGameStore } from './stores/useGameStore'
 
 function App() {
